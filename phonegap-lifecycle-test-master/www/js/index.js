@@ -2,9 +2,18 @@ var paused_count =0;
 var resumed_count = 0;
 var launched_count = 0;
 
+
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		console.log("device ready");
+		
+		itemList();
+		displayList();
+		chocBar();
+		barsTest();
+		
+		
+
     }
 	
 	function updateDisplay() {
@@ -43,24 +52,59 @@ var launched_count = 0;
 	// My Code ---------------------------------------------------------
 	//
 	function itemList() {
-	var key = "phone";
-	var value "black";
-	window.localStorage.setItem( key, value );
-	
-	var key = "keys";
-	var value "shiny";
-	window.localStorage.setItem( key, value );
-	
-	var key = "wallet";
-	var value "leather";
-	window.localStorage.setItem( key, value );
+		var key = "phone";
+		var value = "black";
+		window.localStorage.setItem( key, value );
+		
+		var key = "keys";
+		var value = "shiny";
+		window.localStorage.setItem( key, value );
+		
+		var key = "wallet";
+		var value = "leather";
+		window.localStorage.setItem( key, value );
 	
 	}
 	
 	function displayList() {
-	window.localStorage.getItem("key");
-	updateDisplay();
+		window.localStorage.getItem("phone");
+		var value = window.localStorage.getItem("phone");
+		$("#launched").text("Hello " +  value);
 	}
+
+	function chocBar() {
+		var chocolate = 
+		{
+				"Name": "Mars",
+				"Weight": "51g",
+				"Nutrition per 100g": 
+				{
+						"Energy(KJ)": "1888",
+						"Protein (g)": "4.3",
+						"Carbohydrate (g)": "68.9"
+						
+				}
+		}
+	var chocString = JSON.stringify(chocolate);
+	window.localStorage.setItem("Bar", chocString);
+	}
+	
+	
+	function barsTest() {
+	var bars = [
+			{"Name": "M&Ms", "Energy":{
+				"KJ": "1888"
+				}
+			},
+			{"Name": "Bounty", "Weight": "57g"}
+		];
+		
+		console.log(bars[0].Name + " " + bars[0].Weight.Energy);
+	
+	}
+	
+	
+
 
 	
 	
